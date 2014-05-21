@@ -1,15 +1,6 @@
 Full name:  Karthik Alle
 SEAS login: kalle
 
-Which features did you implement? 
-Entire assignment
-
-Did you complete any extra-credit tasks? If so, which ones?
--
-
-Any special instructions for building and running your solution?
-  (include detailed instructions, or write 'None')
-
 I have implemented this homework on my own server and it worked well.
 Due to time constraints I could not deploy on Jetty and test again.
 Please test on Jetty if you wish to. The web.xml files and paths are specified below.
