@@ -1,0 +1,150 @@
+Full name:  Karthik Alle
+SEAS login: kalle
+
+Which features did you implement? 
+Entire assignment
+
+Did you complete any extra-credit tasks? If so, which ones?
+-
+
+Any special instructions for building and running your solution?
+  (include detailed instructions, or write 'None')
+
+I have implemented this homework on my own server and it worked well.
+Due to time constraints I could not deploy on Jetty and test again.
+Please test on Jetty if you wish to. The web.xml files and paths are specified below.
+Just to make sure, I have tried the war files 
+and on running “jar tf worker.war” all my classes and jars are in the correct packages.
+
+*** I have included the target folder too, because I have not tested it on Jetty, 
+*** I wanted to make sure my code works on my own server with my web.xml files.
+*** Apologies for the inconvenience, please replace it with your target. If it doesn't work, try my target.
+
+*** In workerweb.xml, the port to which the worker listens to is specified in following convention:
+       <servlet>
+       .....
+         <init-param>
+           <param-name>listeningPort</param-name>
+           <param-value>3000</param-value>
+         </init-param>
+       .....
+       </servlet>
+
+
+I have implemented the Context interface in edu.upenn.cis455.mapreduce.job.MyContext.java
+My WordCount.java writes using that object. 
+I have abstracted the deletion, creation and writing of files in MyContext.
+The worker will determine and direct the context regarding the job and directory the writing has to happen.
+
+I have added three web.xml files in the target/worker/WEB-INF:
+worker1web.xml
+worker2web.xml
+worker3web.xml
+
+The master web.xml is in target/master/WEB-INF:
+masterweb.xml
+
+Now to run the master, 
+Run configuration is the following arguments in command line:
+
+8008
+./testfiles
+./target/master/WEB-INF/masterweb.xml
+
+To run the workers these are the command line arguments:
+1. Worker1:
+3000
+./testfiles
+./target/worker/WEB-INF/worker1web.xml
+
+2. Worker2:
+4000
+./testfiles
+./target/worker/WEB-INF/worker2web.xml
+
+3. Worker3:
+5000
+./testfiles
+./target/worker/WEB-INF/worker3web.xml
+
+So we are opening multiple servers listening on different ports.
+As you can see, I have opened the master on 8008, worker1 on 3000, worker2 on 4000 and worker3 on 5000.
+Other ports would also work, but we need to change the web.xmls according to the port numbers.
+
+Also, I have created three folders for storage directories, as specified by the workerXweb.xmls
+Worker1: storage1
+Worker2: storage2
+Worker3: storage3
+
+My testing was done on three files, placed in the input folders of each storage directory:
+storage1/input/in3.txt: 
+1	it is very hard in the beginning
+2	to understand that the whole idea
+3	is not to beat the runners
+4	eventually you learn
+5	that the competition is against the little voice inside you
+6	that wants you to quit
+
+storage2/input/in2.txt:
+1	on a day no different than the one now dawning
+2	Leonardo drew the first strokes of the Mona Lisa
+3	Shakespeare wrote the first words of Hamlet
+4	Beethoven began work on his Ninth symphony and
+5	Einstein discovered the theory of relativity
+6	what are you going to do today
+
+storage3/input/in1.txt: (An article from google news)
+1	LUHANSK, Ukraine, April 8 (Reuters) - Past the barricades of metal railings, 
+2	sandbags and barbed wire, Russian separatists peer out of the state security building 
+3	in the eastern Ukrainian city of Luhansk, rifles in hand.
+4	The headquarters of the former KGB in this small Ukrainian city less than 30 km (20 miles) from the
+5	Russian border is potentially the most dangerous flashpoint among buildings in eastern Ukraine seized on 
+6	Sunday night by pro-Moscow agitators.
+7	Activists inside have seized an armoury of automatic rifles. 
+8	The Ukrainian security service says they have also wired the building with 
+9	explosives and are holding around 60 people there against their will, 
+10	although the activists deny this.
+11	They say they are here for as long as it takes to 
+12	force a referendum on the region's status within Ukraine.
+13	“I’ll stay here until the end, until victory. Once you've taken up arms, 
+14	there's no turning back," said Andrei, one of the men inside, who refused to give his family name.
+15	Holding a police shield, he confirmed that protesters had found 
+16	the arsenal of weapons stored in the security building - around 200-300 Kalashnikovs, 
+17	he said, and some stun grenades.
+
+I have added toreduce.txt file to each storage/spoolin after the mapping is done.
+On sorting this file, we get another file called reduce.txt file.
+
+Now my final results will be placed in:
+storageX/output/result.txt
+
+On concatenating all the results, and checking with online word counter tools, they were matching correctly.
+
+To Test from browser:
+Now on opening the browser and going to the following url:
+
+http://localhost:8008/status
+
+You will get the statuses of the active workers and the web form.
+I have some default values filled in that form for initial testing.
+On submitting, the workers will be assigned jobs to map, and we will be redirected to another page. 
+On clicking 'Go To Status page' we will return to the status page and view the statuses of each worker.
+
+Now if we stop one of the threads and wait for 30 seconds, and go to the same /status url, 
+we notice that the active workers will only be displayed.
+If the page is not displayed, please try reloading and the fresh page will display the active workers.
+
+
+
+Did you personally write _all_ the code you are submitting
+(other than code from the course web page)?
+  [*] Yes
+  [ ] No
+
+Did you copy any code from the Internet, or from classmates?
+  [ ] Yes
+  [*] No
+
+Did you collaborate with anyone on this assignment?
+  [ ] Yes
+  [*] No

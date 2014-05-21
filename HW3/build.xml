@@ -1,0 +1,60 @@
+<project name="HW3" default="all" basedir="./">
+  <target name="init">
+    <mkdir dir="target/master/WEB-INF/classes"/>
+    <mkdir dir="target/worker/WEB-INF/classes"/>
+    <mkdir dir="classes"/>
+  </target>
+  
+  <target name="compile-jobs" depends="init">
+    <javac srcdir="src" destdir="classes" includes="**/job/*.java,**/Job.java,**/Context.java" deprecation="on"
+     debug="true" includeantruntime="false" classpath="classes">
+       <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+  
+  <target name="compile-master" depends="init">
+    <javac srcdir="src" destdir="target/master/WEB-INF/classes" includes="**/master/*.java" deprecation="on"
+     debug="true" includeantruntime="false" classpath="lib/servlet-api.jar">
+       <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+  
+  <target name="compile-worker" depends="init">
+    <javac srcdir="src" destdir="target/worker/WEB-INF/classes" includes="**/worker/*.java,**/job/*.java,**/Job.java,**/Context.java" deprecation="on"
+     debug="true" includeantruntime="false" classpath="lib/servlet-api.jar">
+       <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+
+  <target name="all" depends="war-master,war-worker,compile-jobs"/>
+  
+  <target name="war-master" depends="compile-master">
+    <jar destfile="master.war">
+      <fileset dir="target/master/" includes="WEB-INF/classes/**/*.class"/>
+      <fileset dir="target/master/" includes="WEB-INF/lib/*.jar"/>
+      <fileset dir="target/master/" includes="WEB-INF/*.xml"/>
+    </jar>
+  </target>
+
+  <target name="war-worker" depends="compile-worker">
+    <jar destfile="worker.war">
+      <fileset dir="target/worker/" includes="WEB-INF/classes/**/*.class"/>
+      <fileset dir="target/worker/" includes="WEB-INF/lib/*.jar"/>
+      <fileset dir="target/worker/" includes="WEB-INF/*.xml"/>
+    </jar>
+  </target>
+
+  <target name="clean">
+    <delete dir="target/master/WEB-INF/classes"/>
+    <delete dir="target/worker/WEB-INF/classes"/>
+    <delete dir="classes"/>
+    <delete file="master.war"/>
+    <delete file="worker.war"/>
+  </target>
+	
+	<target name="pack" description="Create an archive for submission">
+	       <zip destfile="submit-hw3.zip">
+	             <zipfileset dir="." excludes="**/*.class,submit-hw3.zip,master.war,worker*.war"/>
+	       </zip>
+	</target>
+</project>

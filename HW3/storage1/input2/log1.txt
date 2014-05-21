@@ -1,0 +1,19 @@
+1	DEBUG | 2008-09-06 10:51:44,817 | DefaultBeanDefinitionDocumentReader.java | 86 | Loading bean definitions
+2	DEBUG | 2008-09-06 10:51:44,848 | AbstractBeanDefinitionReader.java | 185 | Loaded 5 bean definitions from location pattern [samContext.xml]
+3	INFO | 2008-09-06 10:51:44,848 | XmlBeanDefinitionReader.java | 323 | Loading XML bean definitions from class path resource [tmfContext.xml]
+4	DEBUG | 2008-09-06 10:51:44,848 | DefaultDocumentLoader.java | 72 | Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+5	DEBUG | 2008-09-06 10:51:44,848 | BeansDtdResolver.java | 72 | Found beans DTD [http://www.springframework.org/dtd/spring-beans.dtd] in classpath: spring-beans.dtd
+6	DEBUG | 2008-09-06 10:51:44,864 | DefaultBeanDefinitionDocumentReader.java | 86 | Loading bean definitions
+7	DEBUG | 2008-09-06 10:51:45,458 | AbstractAutowireCapableBeanFactory.java | 411 | Finished creating instance of bean 'MS-SQL'
+8	DEBUG | 2008-09-06 10:51:45,458 | DefaultSingletonBeanRegistry.java | 213 | Creating shared instance of singleton bean 'MySQL'
+9	ERROR | 2008-09-06 10:51:45,458 | edu.upenn.cis455.Grading.java | 383 | If this was found, grep was successful.
+10	DEBUG | 2008-09-06 10:51:45,458 | AbstractAutowireCapableBeanFactory.java | 459 | Eagerly caching bean 'MySQL' to allow for resolving potential circular references
+11	DEBUG | 2008-09-06 10:51:45,458 | AbstractAutowireCapableBeanFactory.java | 411 | Finished creating instance of bean 'MySQL'
+12	DEBUG | 2008-09-06 10:51:45,458 | DefaultSingletonBeanRegistry.java | 213 | Creating shared instance of singleton bean 'Oracle'
+13	DEBUG | 2008-09-06 10:51:45,458 | AbstractAutowireCapableBeanFactory.java | 383 | Creating instance of bean 'Oracle'
+14	DEBUG | 2008-09-06 10:51:45,458 | AbstractAutowireCapableBeanFactory.java | 459 | Eagerly caching bean 'Oracle' to allow for resolving potential circular references
+15	DEBUG | 2008-09-06 10:51:45,473 | AbstractAutowireCapableBeanFactory.java | 411 | Finished creating instance of bean 'Oracle'
+16	DEBUG | 2008-09-06 10:51:45,473 | DefaultSingletonBeanRegistry.java | 213 | Creating shared instance of singleton bean 'PostgreSQL'
+17	DEBUG | 2008-09-06 10:51:45,473 | AbstractAutowireCapableBeanFactory.java | 383 | Creating instance of bean 'PostgreSQL'
+18	DEBUG | 2008-09-06 10:51:45,473 | AbstractAutowireCapableBeanFactory.java | 459 | Eagerly caching bean 'PostgreSQL' to allow for resolving potential circular references
+19	DEBUG | 2008-09-06 10:51:45,473 | AbstractAutowireCapableBeanFactory.java | 411 | Finished creating instance of bean 'PostgreSQL'
